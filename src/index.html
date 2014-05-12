@@ -12,6 +12,17 @@
     <link rel="stylesheet" href="css/spectrum.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/normalize.min.css">
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc.15.min.js"></script>
+
+    <script>
+      AWS.config.update({accessKeyId: 'AKIAJRVXO4GTJTZWVF5A', secretAccessKey: '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'});
+      AWS.config.region = 'us-east-1';
+
+      window.cloudwatch = new AWS.CloudWatch();
+
+    </script>
+
     <!-- load the root require context -->
     <script src="vendor/require/require.js"></script>
     <script src="app/components/require.config.js"></script>

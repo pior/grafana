@@ -9,6 +9,7 @@ define([
   './graphiteTarget',
   './graphiteImport',
   './influxTargetCtrl',
+  './cloudwatchTargetCtrl',
   './playlistCtrl',
   './inspectCtrl',
 ], function () {});

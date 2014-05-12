@@ -1,0 +1,115 @@
+
+<div class="editor-row" style="margin-top: 10px;">
+
+  <div  ng-repeat="target in panel.targets"
+        class="grafana-target"
+        ng-class="{'grafana-target-hidden': target.hide}"
+        ng-controller="CloudwatchTargetCtrl"
+        ng-init="init()">
+
+    <div class="grafana-target-inner-wrapper">
+      <div class="grafana-target-inner">
+        <ul class="grafana-target-controls">
+          <li class="dropdown">
+            <a class="pointer dropdown-toggle"
+               data-toggle="dropdown"
+               tabindex="1">
+              <i class="icon-cog"></i>
+            </a>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li role="menuitem">
+                <a tabindex="1" ng-click="duplicate()">Duplicate</a>
+              </li>
+           </ul>
+          </li>
+          <li>
+            <a class="pointer" tabindex="1" ng-click="removeTarget(target)">
+              <i class="icon-remove"></i>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="grafana-target-controls-left">
+          <li>
+            <a class="grafana-target-segment"
+               ng-click="target.hide = !target.hide; get_data();"
+               role="menuitem">
+              <i class="icon-eye-open"></i>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="grafana-segment-list" role="menu">
+          <li class="grafana-target-segment">
+            Namespace
+          </li>
+
+          <li>
+            <input type="text"
+                   class="input-small grafana-target-segment-input"
+                   ng-model="target.namespace"
+                   placeholder="ie: AWS/ELB"
+                   spellcheck='false'
+                   bs-typeahead=""
+                   data-min-length=0 data-items=100
+                   ng-blur="inputChanged()">
+          </li>
+
+          <li class="grafana-target-segment">
+            MetricName
+          </li>
+
+          <li>
+            <input type="text"
+                   class="input-small grafana-target-segment-input"
+                   ng-model="target.metricName"
+                   placeholder="ie: Latency"
+                   spellcheck='false'
+                   bs-typeahead=""
+                   data-min-length=0
+                   ng-blur="inputChanged()">
+          </li>
+
+          <li class="grafana-target-segment">
+            Dimensions
+          </li>
+
+          <li>
+            <input type="text"
+                   class="input-small grafana-target-segment-input"
+                   ng-model="target.dimensions"
+                   placeholder="ie: AvailabilityZone=us-east-1a"
+                   spellcheck='false'
+                   bs-typeahead=""
+                   data-min-length=0
+                   ng-blur="inputChanged()">
+          </li>
+
+          <li class="grafana-target-segment">
+            Statistics
+          </li>
+          <li>
+            <select class="input-small grafana-target-segment-input"
+                    ng-change="inputChanged()"
+                    ng-model="target.statistic"
+                    ng-options="f for f in statistics" ></select>
+          </li>
+
+          <li class="grafana-target-segment">
+            Units
+          </li>
+          <li>
+            <select class="input-small grafana-target-segment-input"
+                    ng-change="inputChanged()"
+                    ng-model="target.unit"
+                    ng-options="f for f in units" ></select>
+          </li>
+
+        </ul>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
